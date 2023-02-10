@@ -1,0 +1,31 @@
+.filters{
+    
+background: #FFFFFF;
+box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+border-radius: 5px;
+}
+
+aside{
+    width: 232px;
+    height: 252px;
+    padding: 20px;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+.checkbox{
+    display: flex;
+    flex-direction: column;
+    font-weight: 400;
+    font-size: 13px;
+}
+.ant-checkbox-wrapper{
+    width: 223px;
+    height: 40px;
+    padding: 10px 0 10px 20px;
+   
+}
+
+.ant-checkbox-wrapper+.ant-checkbox-wrapper{
+    margin-inline-start: 0;
+}
