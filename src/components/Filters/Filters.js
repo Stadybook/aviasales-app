@@ -28,6 +28,7 @@ function Filters() {
     return (
         <aside className='filters'>
             <Checkbox
+                className='checkbox'
                 indeterminate={indeterminate}
                 onChange={onCheckAllChange}
                 checked={checkAll}
@@ -35,7 +36,7 @@ function Filters() {
                 Все
             </Checkbox>
             <CheckboxGroup
-                className='checkbox'
+                className='checkbox-group'
                 options={plainOptions}
                 value={checkedList}
                 onChange={onChange}

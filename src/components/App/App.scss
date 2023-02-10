@@ -1,3 +1,4 @@
+
 body{
     background-color: #F1FCFF;
 }
@@ -11,12 +12,26 @@ button:active, button:focus {
   button:hover, button:focus{
     cursor: pointer;
   }
-.container{
-    padding: 50px 103px;
-   
-}
-.main{
-  display: flex;
-  justify-content: center;
-  gap:20px;
-}
+  @media (min-width: 800px ) {
+    .container{
+        padding: 50px 103px;
+    }
+    .main{
+      display: flex;
+      justify-content: center;
+      gap:20px;
+    }
+  }
+  @media (max-width: 800px ) {
+    .container{
+        padding: 5px;
+    }
+    .main{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap:20px;
+    }
+  }
+
+

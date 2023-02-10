@@ -1,5 +1,6 @@
 .tabs{
     display: flex;
+    justify-content: center;
     margin-bottom: 20px;
 }
 
@@ -23,9 +24,17 @@
     border: 1px solid #DFE5EC;
 }
 
-.ant-typography{
-    font-size: 12px;
-    font-weight: 600;
+@media (min-width: 800px ) {
+    .text{
+        font-size: 12px;
+        font-weight: 600;
+    }
+}
+@media (max-width: 800px ) {
+    .text{
+        font-size: 10px;
+        font-weight: 600;
+    }
 }
 .active{
     background: #2196F3;
