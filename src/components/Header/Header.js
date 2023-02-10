@@ -1,10 +1,10 @@
 import React from "react";
 import photo  from './Logo.svg'
-import './Header.scss'
+import s from './Header.module.scss'
 
 function Header(){
     return(
-        <div className="logo">
+        <div className={s.logo}>
             <img  src={photo} alt='logo'></img>
         </div>
     )

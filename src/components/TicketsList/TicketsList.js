@@ -1,5 +1,5 @@
 import React from "react";
-import './TicketsList.scss';
+import s from './TicketsList.module.scss';
 import Ticket from "../Ticket/Ticket";
 
 

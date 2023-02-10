@@ -16,12 +16,11 @@
 
 .tab{
     width: 168px;
-height: 50px;
-background: #FFFFFF;
-letter-spacing: 0.5px;
-text-transform: uppercase;
-
-border: 1px solid #DFE5EC;
+    height: 50px;
+    background: #FFFFFF;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    border: 1px solid #DFE5EC;
 }
 
 .ant-typography{
@@ -32,6 +31,5 @@ border: 1px solid #DFE5EC;
     background: #2196F3;
 }
 .active .ant-typography {
-   
     color: #FFFFFF;
 }

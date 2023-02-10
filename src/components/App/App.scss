@@ -7,13 +7,16 @@ button:active, button:focus {
   button::-moz-focus-inner {
     border: 0;
   }
+
+  button:hover, button:focus{
+    cursor: pointer;
+  }
 .container{
     padding: 50px 103px;
    
 }
-
 .main{
-    display: flex;
-    justify-content: center;
-    gap:20px;
+  display: flex;
+  justify-content: center;
+  gap:20px;
 }

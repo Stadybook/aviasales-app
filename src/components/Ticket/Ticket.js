@@ -1,21 +1,18 @@
 import React from "react";
-import './Ticket.scss';
+import s from './Ticket.module.scss';
 import photo  from './S7 Logo.svg'
 import { Typography } from 'antd';
-
 const { Text } = Typography;
-
 
 function Ticket(){
     return(
-        <div className="card">
-            <div className="head">
+        <div className={s.card}>
+            <div className={s.head}>
                 <Text>13 000 Р</Text>
                 <div>
                     <img src={photo} alt='S7-LOGO'></img>
                 </div>
             </div>
-          
             <table> 
                 <thead>
                     <tr>

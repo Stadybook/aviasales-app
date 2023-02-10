@@ -3,6 +3,8 @@ import './Filters.scss';
 import { Checkbox} from 'antd';
 import { useState } from 'react';
 
+
+
 const CheckboxGroup = Checkbox.Group;
 const plainOptions = ['Без пересадок', '1 пересадка', '2 пересадки', '3 пересадки'];
 const defaultCheckedList = ['Без пересадок'];
@@ -22,7 +24,7 @@ function Filters(){
       setCheckAll(e.target.checked);
     };
     return (
-      <aside >
+      <aside className="filters">
         <Checkbox  indeterminate={indeterminate} onChange={onCheckAllChange} checked={checkAll}>
           Все
         </Checkbox>
