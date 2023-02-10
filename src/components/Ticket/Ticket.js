@@ -1,19 +1,21 @@
-import React from "react";
-import s from './Ticket.module.scss';
-import photo  from './S7 Logo.svg'
+import React from 'react';
 import { Typography } from 'antd';
+
+import s from './Ticket.module.scss';
+import photo from './S7 Logo.svg';
+
 const { Text } = Typography;
 
-function Ticket(){
-    return(
+function Ticket() {
+    return (
         <div className={s.card}>
             <div className={s.head}>
                 <Text>13 000 Р</Text>
                 <div>
-                    <img src={photo} alt='S7-LOGO'></img>
+                    <img src={photo} alt='S7-LOGO' />
                 </div>
             </div>
-            <table> 
+            <table>
                 <thead>
                     <tr>
                         <th>MOW – HKT</th>
@@ -26,10 +28,10 @@ function Ticket(){
                         <td>10:45 – 08:00</td>
                         <td>21ч 15м</td>
                         <td>HKG, JNB</td>
-                    </tr> 
-                </tbody> 
+                    </tr>
+                </tbody>
             </table>
-            <table> 
+            <table>
                 <thead>
                     <tr>
                         <th>MOW – HKT</th>
@@ -42,12 +44,11 @@ function Ticket(){
                         <td>10:45 – 08:00</td>
                         <td>21ч 15м</td>
                         <td>HKG, JNB</td>
-                    </tr> 
-                </tbody> 
+                    </tr>
+                </tbody>
             </table>
-            
         </div>
-    )
+    );
 }
 
 export default Ticket;

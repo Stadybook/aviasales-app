@@ -1,13 +1,14 @@
-import React from "react";
-import photo  from './Logo.svg'
-import s from './Header.module.scss'
+import React from 'react';
 
-function Header(){
-    return(
+import photo from './Logo.svg';
+import s from './Header.module.scss';
+
+function Header() {
+    return (
         <div className={s.logo}>
-            <img  src={photo} alt='logo'></img>
+            <img src={photo} alt='logo' />
         </div>
-    )
+    );
 }
 
 export default Header;

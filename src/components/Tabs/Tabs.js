@@ -1,24 +1,24 @@
-import React from "react";
-import s from './Tabs.module.scss';
+import React from 'react';
 import { Typography } from 'antd';
+
+import s from './Tabs.module.scss';
+
 const { Text } = Typography;
 
-function Tabs(){
-    return(
-        
+function Tabs() {
+    return (
         <div className={s.tabs}>
-            <button className={`${s['tab']} ${s['active']}`}>
-                <Text >Самый дешевый</Text>
-            </button> 
-            <button className={s.tab}>
-                <Text >Самый быстрый</Text>
-            </button> 
-            <button className={s.tab}>
-           
-                <Text >Оптимальный</Text>
-            </button> 
+            <button type='button' className={`${s.tab} ${s.active}`}>
+                <Text className={s.text}>Самый дешевый</Text>
+            </button>
+            <button type='button' className={s.tab}>
+                <Text className={s.text}>Самый быстрый</Text>
+            </button>
+            <button type='button' className={s.tab}>
+                <Text className={s.text}>Оптимальный</Text>
+            </button>
         </div>
-    )
+    );
 }
 
 export default Tabs;
