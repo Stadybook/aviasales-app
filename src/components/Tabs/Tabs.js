@@ -29,6 +29,20 @@ function Tabs(props) {
         });
     });
 
+    /* const click = () => {
+        const buttons = document.querySelectorAll('button');
+        buttons.forEach((button) => {
+            button.classList.remove(s.active);
+        });
+        buttons.forEach((button) => {
+            if (button.textContent === props.btn) {
+                if (!button.classList.contains(s.active)) {
+                    button.classList.add(s.active);
+                }
+            }
+        });
+    } */
+
     return (
         <div className={s.tabs}>
             <button
