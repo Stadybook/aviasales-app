@@ -1,48 +1,36 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
-import './Filters.scss';
-import { Checkbox } from 'antd';
 
-const CheckboxGroup = Checkbox.Group;
-const plainOptions = [
-    'Без пересадок',
-    '1 пересадка',
-    '2 пересадки',
-    '3 пересадки',
-];
-const defaultCheckedList = ['Без пересадок'];
+import s from './Filters.module.scss';
 
 function Filters() {
-    const [checkedList, setCheckedList] = useState(defaultCheckedList);
-    const [indeterminate, setIndeterminate] = useState(true);
-    const [checkAll, setCheckAll] = useState(false);
-    const onChange = (list) => {
-        setCheckedList(list);
-        setIndeterminate(!!list.length && list.length < plainOptions.length);
-        setCheckAll(list.length === plainOptions.length);
-    };
-    const onCheckAllChange = (e) => {
-        setCheckedList(e.target.checked ? plainOptions : []);
-        setIndeterminate(false);
-        setCheckAll(e.target.checked);
-    };
     return (
-        <aside className='filters'>
-            <Checkbox
-                className='checkbox'
-                indeterminate={indeterminate}
-                onChange={onCheckAllChange}
-                checked={checkAll}
-            >
-                Все
-            </Checkbox>
-            <CheckboxGroup
-                className='checkbox-group'
-                options={plainOptions}
-                value={checkedList}
-                onChange={onChange}
-            />
+        <aside className={s.filters}>
+            <h6>Количество пересадок</h6>
+            <div className={s.checkbox}>
+                <div className={s.item}>
+                    <input className={s.toggle} type='checkbox' id='all' />
+                    <label htmlFor='all'>Все</label>
+                </div>
+                <div className={s.item}>
+                    <input className={s.toggle} type='checkbox' id='2' />
+                    <label htmlFor='2'>Без пересадок</label>
+                </div>
+                <div className={s.item}>
+                    <input className={s.toggle} type='checkbox' id='3' />
+                    <label htmlFor='3'>1 пересадка</label>
+                </div>
+                <div className={s.item}>
+                    <input className={s.toggle} type='checkbox' id='4' />
+                    <label htmlFor='4'>2 пересадки</label>
+                </div>
+                <div className={s.item}>
+                    <input className={s.toggle} type='checkbox' id='5' />
+                    <label htmlFor='5'>3 пересадки</label>
+                </div>
+            </div>
         </aside>
     );
 }
-
 export default Filters;
