@@ -1,37 +1,41 @@
+$color_1:#F1FCFF;
 
-body{
-    background-color: #F1FCFF;
+body {
+	background-color: $color_1;
 }
-button:active, button:focus {
-    outline: none;
-  }
-  button::-moz-focus-inner {
-    border: 0;
-  }
-
-  button:hover, button:focus{
-    cursor: pointer;
-  }
-  @media (min-width: 800px ) {
-    .container{
-        padding: 50px 103px;
-    }
-    .main{
-      display: flex;
-      justify-content: center;
-      gap:20px;
-    }
-  }
-  @media (max-width: 800px ) {
-    .container{
-        padding: 5px;
-    }
-    .main{
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap:20px;
-    }
-  }
-
-
+button {
+	&:active {
+		outline: none;
+	}
+	&:focus {
+		outline: none;
+		cursor: pointer;
+	}
+	&::-moz-focus-inner {
+		border: 0;
+	}
+	&:hover {
+		cursor: pointer;
+	}
+}
+@media (min-width: 800px ) {
+	.container {
+		padding: 50px 103px;
+	}
+	.main {
+		display: flex;
+		justify-content: center;
+		gap: 20px;
+	}
+}
+@media (max-width: 800px ) {
+	.container {
+		padding: 5px;
+	}
+	.main {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: 20px;
+	}
+}
