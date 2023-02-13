@@ -8,11 +8,11 @@ import { setAll, setZero, setOne, setTwo, setThree } from '../../redux/actions';
 import s from './Filters.module.scss';
 
 function Filters(props) {
-    const [choseAll, setAllFilters] = useState(false);
+    const [choseAll, setAllFilters] = useState(true);
     const [choseZero, setZeroTransfer] = useState(true);
-    const [choseOne, setOneTransfer] = useState(false);
-    const [choseTwo, setTwoTransfers] = useState(false);
-    const [choseThree, setThreeTransfers] = useState(false);
+    const [choseOne, setOneTransfer] = useState(true);
+    const [choseTwo, setTwoTransfers] = useState(true);
+    const [choseThree, setThreeTransfers] = useState(true);
 
     useEffect(() => {
         if (choseZero && choseOne && choseTwo && choseThree) {
@@ -44,7 +44,11 @@ function Filters(props) {
                 setThreeTransfers(e.target.checked);
                 break;
             default:
+                setAllFilters(e.target.checked);
                 setZeroTransfer(e.target.checked);
+                setOneTransfer(e.target.checked);
+                setTwoTransfers(e.target.checked);
+                setThreeTransfers(e.target.checked);
         }
     };
 

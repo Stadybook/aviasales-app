@@ -1,14 +1,14 @@
 /* eslint-disable default-param-last */
 
 const initialState = {
-    show: 1,
+    numberOfTickets: 5,
 };
 
 const ShowTicketsReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'show':
             return {
-                show: state.show + 1,
+                numberOfTickets: state.numberOfTickets + 5,
             };
         default:
             return state;

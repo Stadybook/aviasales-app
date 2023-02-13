@@ -1,4 +1,6 @@
 /* eslint-disable no-unused-vars */
+import Service from '../service/ServiceFile';
+
 import { chipest, fastest, optimal, all, zero, one, two, three } from './types';
 
 export function chooseChipest() {
@@ -50,21 +52,15 @@ export function setThree() {
 }
 
 export function showTickets() {
+    const getTickets = new Service();
+    getTickets.getInfo().then((body) => console.log(body.tickets));
     return {
         type: 'show',
     };
 }
 
-// test
-
-function log() {
-    // console.log('asyncShowTickets');
-}
-
 export function asyncShowTickets() {
     return (dispatch) => {
-        setTimeout(() => {
-            dispatch(log);
-        }, 3000);
+        dispatch(showTickets());
     };
 }
