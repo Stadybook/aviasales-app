@@ -6,21 +6,18 @@ import Header from '../Header';
 import Filters from '../Filters';
 import TicketsList from '../TicketsList';
 import Tabs from '../Tabs';
-import Service from '../../service/ServiceFile';
+import ShowMoreTickets from '../ShowMoreTickets';
 
 function App() {
-    const getInfo = new Service();
-
-    // getInfo.getInfo().then((body) => console.log(body));
-
     return (
         <div className='container'>
             <Header />
-            <div className='main'>
+            <div className='content'>
                 <Filters />
-                <div className=''>
+                <div className='main'>
                     <Tabs />
                     <TicketsList />
+                    <ShowMoreTickets />
                 </div>
             </div>
         </div>

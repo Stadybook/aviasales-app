@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/destructuring-assignment */
 import React, { useEffect } from 'react';
@@ -16,7 +17,7 @@ const { Text } = Typography;
 
 function Tabs(props) {
     useEffect(() => {
-        const buttons = document.querySelectorAll('button');
+        const buttons = document.querySelectorAll('.Tabs_btn__G5rIX');
         buttons.forEach((button) => {
             button.classList.remove(s.active);
         });
@@ -29,36 +30,22 @@ function Tabs(props) {
         });
     });
 
-    /* const click = () => {
-        const buttons = document.querySelectorAll('button');
-        buttons.forEach((button) => {
-            button.classList.remove(s.active);
-        });
-        buttons.forEach((button) => {
-            if (button.textContent === props.btn) {
-                if (!button.classList.contains(s.active)) {
-                    button.classList.add(s.active);
-                }
-            }
-        });
-    } */
-
     return (
-        <div className={s.tabs}>
+        <div className={s.btns}>
             <button
                 type='button'
                 onClick={props.onChipestBtn}
-                className={`${s.tab} ${s.active}`}
+                className={`${s.btn} ${s.active}`}
             >
                 <Text className={s.text}>Самый дешевый</Text>
             </button>
-            <button type='button' onClick={props.onFasterBtn} className={s.tab}>
+            <button type='button' onClick={props.onFasterBtn} className={s.btn}>
                 <Text className={s.text}>Самый быстрый</Text>
             </button>
             <button
                 type='button'
                 onClick={props.onOptimalBtn}
-                className={s.tab}
+                className={s.btn}
             >
                 <Text className={s.text}>Оптимальный</Text>
             </button>

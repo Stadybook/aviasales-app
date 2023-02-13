@@ -1,4 +1,5 @@
 /* eslint-disable default-param-last */
+import { all, zero, one, two, three } from './types';
 
 const initialState = {
     fiter: 'all',
@@ -6,24 +7,24 @@ const initialState = {
 
 const filtersReducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'all':
+        case all:
             return {
                 btn: 'all',
             };
-        case 'zero':
+        case zero:
             return {
                 btn: 'zero',
             };
 
-        case 'one':
+        case one:
             return {
                 btn: 'one',
             };
-        case 'two':
+        case two:
             return {
                 btn: 'two',
             };
-        case 'three':
+        case three:
             return {
                 btn: 'three',
             };

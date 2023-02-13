@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { chipest, fastest, optimal, all, zero, one, two, three } from './types';
 
 export function chooseChipest() {
@@ -45,5 +46,25 @@ export function setTwo() {
 export function setThree() {
     return {
         type: three,
+    };
+}
+
+export function showTickets() {
+    return {
+        type: 'show',
+    };
+}
+
+// test
+
+function log() {
+    // console.log('asyncShowTickets');
+}
+
+export function asyncShowTickets() {
+    return (dispatch) => {
+        setTimeout(() => {
+            dispatch(log);
+        }, 3000);
     };
 }

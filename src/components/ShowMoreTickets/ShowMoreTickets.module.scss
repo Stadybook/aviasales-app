@@ -1,0 +1,17 @@
+$color_5:#2196F3;
+$color_4:#DFE5EC;
+$color_3:#FFFFFF;
+
+.btn{
+    width:502px;
+    height: 50px;
+	letter-spacing: 0.5px;
+    border-radius: 5px;
+	text-transform: uppercase;
+	border: 1px solid $color_4;
+    background: $color_5;
+    .text {
+		color: $color_3;
+	}
+	
+}

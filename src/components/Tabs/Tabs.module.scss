@@ -1,12 +1,11 @@
 $color_3:#FFFFFF;
 $color_4:#DFE5EC;
 $color_5:#2196F3;
-.tabs {
+.btns {
 	display: flex;
 	justify-content: center;
-	margin-bottom: 20px;
 }
-.tab {
+.btn {
 	&:first-child {
 		border-bottom-left-radius: 5px;
 		border-top-left-radius: 5px;
