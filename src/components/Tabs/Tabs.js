@@ -1,7 +1,5 @@
 /* eslint-disable no-use-before-define */
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/destructuring-assignment */
-import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Typography } from 'antd';
 
@@ -16,36 +14,38 @@ import s from './Tabs.module.scss';
 const { Text } = Typography;
 
 function Tabs(props) {
-    useEffect(() => {
-        const buttons = document.querySelectorAll('.Tabs_btn__G5rIX');
-        buttons.forEach((button) => {
-            button.classList.remove(s.active);
-        });
-        buttons.forEach((button) => {
-            if (button.textContent === props.btn) {
-                if (!button.classList.contains(s.active)) {
-                    button.classList.add(s.active);
-                }
-            }
-        });
-    });
-
     return (
         <div className={s.btns}>
             <button
                 type='button'
                 onClick={props.onChipestBtn}
-                className={`${s.btn} ${s.active}`}
+                className={
+                    props.btn === 'Самый дешевый'
+                        ? `${s.btn} ${s.active}`
+                        : `${s.btn}`
+                }
             >
                 <Text className={s.text}>Самый дешевый</Text>
             </button>
-            <button type='button' onClick={props.onFasterBtn} className={s.btn}>
+            <button
+                type='button'
+                onClick={props.onFasterBtn}
+                className={
+                    props.btn === 'Самый быстрый'
+                        ? `${s.btn} ${s.active}`
+                        : `${s.btn}`
+                }
+            >
                 <Text className={s.text}>Самый быстрый</Text>
             </button>
             <button
                 type='button'
                 onClick={props.onOptimalBtn}
-                className={s.btn}
+                className={
+                    props.btn === 'Оптимальный'
+                        ? `${s.btn} ${s.active}`
+                        : `${s.btn}`
+                }
             >
                 <Text className={s.text}>Оптимальный</Text>
             </button>

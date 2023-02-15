@@ -5,7 +5,7 @@ import React from 'react';
 import { Typography } from 'antd';
 import { connect } from 'react-redux';
 
-import { asyncShowTickets } from '../../redux/actions';
+import { addFiveTickets } from '../../redux/actions';
 
 import s from './ShowMoreTickets.module.scss';
 
@@ -28,7 +28,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        showMore: () => dispatch(asyncShowTickets()),
+        showMore: () => dispatch(addFiveTickets()),
     };
 }
 

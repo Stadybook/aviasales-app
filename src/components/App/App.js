@@ -1,5 +1,7 @@
+/* eslint-disable react/destructuring-assignment */
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
 
 import './App.scss';
 import Header from '../Header';
@@ -7,8 +9,13 @@ import Filters from '../Filters';
 import TicketsList from '../TicketsList';
 import Tabs from '../Tabs';
 import ShowMoreTickets from '../ShowMoreTickets';
+import { asyncShowTickets, showTickets } from '../../redux/actions';
 
-function App() {
+function App(props) {
+    useEffect(() => {
+        props.loadTickets();
+    }, []);
+
     return (
         <div className='container'>
             <Header />
@@ -24,4 +31,17 @@ function App() {
     );
 }
 
-export default App;
+function mapStateToProps(state) {
+    const { ShowTicketsReducer } = state;
+    return {
+        tickets: ShowTicketsReducer.tickets,
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        loadTickets: () => dispatch(asyncShowTickets()),
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

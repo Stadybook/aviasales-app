@@ -51,16 +51,24 @@ export function setThree() {
     };
 }
 
-export function showTickets() {
-    const getTickets = new Service();
-    getTickets.getInfo().then((body) => console.log(body.tickets));
+export function addFiveTickets() {
     return {
         type: 'show',
     };
 }
 
+export function showTickets(payload) {
+    return {
+        type: 'load_tickets',
+        payload,
+    };
+}
+
 export function asyncShowTickets() {
     return (dispatch) => {
-        dispatch(showTickets());
+        const getTickets = new Service();
+        getTickets
+            .getInfo()
+            .then((body) => dispatch(showTickets(body.tickets)));
     };
 }

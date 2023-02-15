@@ -45,9 +45,10 @@ $color_3:#FFFFFF;
 		padding-left: 30px;
 	}
 }
-.checkbox-wrapper {
+.item, label{
 	&:hover {
 		background-color: $color_1;
+		cursor: pointer;
 	}
 }
 @media (min-width: 801px ) {
