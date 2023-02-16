@@ -25,14 +25,18 @@ table {
 	font-size: 14px;
 	line-height: 21px;
 }
+td, th{
+		width: 35%;
+
+}
 td {
 	&:nth-child(2) {
-		padding: 0 20px;
+		width: 30%;
 	}
 }
 th {
 	&:nth-child(2) {
-		padding: 0 20px;
+		width: 30%;
 	}
 }
 thead {

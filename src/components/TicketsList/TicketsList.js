@@ -1,3 +1,4 @@
+/* eslint-disable import/namespace */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable no-unused-vars */
 import React from 'react';
