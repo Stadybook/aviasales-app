@@ -9,12 +9,23 @@ import Filters from '../Filters';
 import TicketsList from '../TicketsList';
 import Tabs from '../Tabs';
 import ShowMoreTickets from '../ShowMoreTickets';
-import { asyncShowTickets, showTickets } from '../../redux/actions';
+import Spiner from '../Spiner/Spiner';
+import DisconnectIndicator from '../DisconnectIndicator';
+import { asyncShowTickets } from '../../redux/actions';
 
 function App(props) {
     useEffect(() => {
-        props.loadTickets();
-    }, []);
+        if (!props.stop) {
+            props.loadTickets();
+        }
+    }, [props.stop]);
+
+    if (!navigator.onLine) {
+        return <DisconnectIndicator />;
+    }
+
+    const ticketsContent =
+        props.tickets.length === 0 ? <Spiner /> : <TicketsList />;
 
     return (
         <div className='container'>
@@ -23,7 +34,7 @@ function App(props) {
                 <Filters />
                 <div className='main'>
                     <Tabs />
-                    <TicketsList />
+                    {ticketsContent}
                     <ShowMoreTickets />
                 </div>
             </div>
@@ -33,8 +44,11 @@ function App(props) {
 
 function mapStateToProps(state) {
     const { ShowTicketsReducer } = state;
+    const { tabsReducer } = state;
     return {
         tickets: ShowTicketsReducer.tickets,
+        stop: ShowTicketsReducer.stop,
+        btn: tabsReducer.btn,
     };
 }
 

@@ -34,3 +34,6 @@ const filtersReducer = (state = initialState, action) => {
 };
 
 export default filtersReducer;
+
+// // filterTickets.sort((previous, next) => (previous.price > next.price ? 1 : -1));
+// data.sort((a, b) => a.price.localeCompare(b.price));

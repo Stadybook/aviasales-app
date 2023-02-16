@@ -64,11 +64,11 @@ export function showTickets(payload) {
     };
 }
 
-export function asyncShowTickets() {
+export function asyncShowTickets(btn) {
     return (dispatch) => {
         const getTickets = new Service();
         getTickets
             .getInfo()
-            .then((body) => dispatch(showTickets(body.tickets)));
+            .then((body) => dispatch(showTickets([body.tickets, body.stop])));
     };
 }

@@ -1,5 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
+import './Spiner.scss';
 import { LoadingOutlined } from '@ant-design/icons';
 import { Spin } from 'antd';
 
@@ -15,7 +16,7 @@ const antIcon = (
 function Spiner() {
     return (
         <div className='spiner'>
-            <Spin indicator={antIcon} tip='Loading...' size='large' />
+            <Spin indicator={antIcon} tip='Ticket loading...' size='large' />
         </div>
     );
 }

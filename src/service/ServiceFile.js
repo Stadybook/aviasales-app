@@ -1,4 +1,4 @@
-/* eslint-disable import/prefer-default-export */
+/* eslint-disable no-alert */
 /* eslint-disable class-methods-use-this */
 
 const baseURL = ' https://aviasales-test-api.kata.academy/';
@@ -6,6 +6,7 @@ export default class Service {
     async getTicketsInfo(url) {
         const res = await fetch(url);
         if (!res.ok) {
+            alert(`Invalid responce ${res.status}. Try to reload website.`);
             throw new Error('invalid responce', res.status);
         }
         const body = await res.json();
