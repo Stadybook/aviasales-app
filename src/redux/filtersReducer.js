@@ -1,32 +1,57 @@
 /* eslint-disable default-param-last */
-import { all, zero, one, two, three } from './types';
+import {
+    allTransfer,
+    zeroTransfer,
+    oneTransfer,
+    twoTransfer,
+    threeTransfer,
+} from './types';
 
 const initialState = {
-    fiter: 'all',
+    allFilters: true,
+    filters: { zero: true, one: true, two: true, three: true },
 };
 
 const filtersReducer = (state = initialState, action) => {
     switch (action.type) {
-        case all:
+        case allTransfer:
             return {
-                btn: 'all',
-            };
-        case zero:
-            return {
-                btn: 'zero',
+                ...state,
+                allFilters: action.payload,
             };
 
-        case one:
+        case zeroTransfer:
             return {
-                btn: 'one',
+                ...state,
+                filters: {
+                    ...state.filters,
+                    zero: action.payload,
+                },
             };
-        case two:
+
+        case oneTransfer:
             return {
-                btn: 'two',
+                ...state,
+                filters: {
+                    ...state.filters,
+                    one: action.payload,
+                },
             };
-        case three:
+        case twoTransfer:
             return {
-                btn: 'three',
+                ...state,
+                filters: {
+                    ...state.filters,
+                    two: action.payload,
+                },
+            };
+        case threeTransfer:
+            return {
+                ...state,
+                filters: {
+                    ...state.filters,
+                    three: action.payload,
+                },
             };
         default:
             return state;
@@ -34,6 +59,3 @@ const filtersReducer = (state = initialState, action) => {
 };
 
 export default filtersReducer;
-
-// // filterTickets.sort((previous, next) => (previous.price > next.price ? 1 : -1));
-// data.sort((a, b) => a.price.localeCompare(b.price));

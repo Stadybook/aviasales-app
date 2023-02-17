@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/destructuring-assignment */
-import { useEffect, useState } from 'react';
+
 import { connect } from 'react-redux';
 
 import { setAll, setZero, setOne, setTwo, setThree } from '../../redux/actions';
@@ -8,47 +8,45 @@ import { setAll, setZero, setOne, setTwo, setThree } from '../../redux/actions';
 import s from './Filters.module.scss';
 
 function Filters(props) {
-    const [choseAll, setAllFilters] = useState(true);
-    const [choseZero, setZeroTransfer] = useState(true);
-    const [choseOne, setOneTransfer] = useState(true);
-    const [choseTwo, setTwoTransfers] = useState(true);
-    const [choseThree, setThreeTransfers] = useState(true);
-
-    useEffect(() => {
-        if (choseZero && choseOne && choseTwo && choseThree) {
-            setAllFilters(true);
-        } else {
-            setAllFilters(false);
-        }
-    }, [choseZero, choseOne, choseTwo, choseThree]);
-
     const onChangeCheckbox = (e) => {
         switch (e.target.name) {
             case 'all':
-                setAllFilters(e.target.checked);
-                setZeroTransfer(e.target.checked);
-                setOneTransfer(e.target.checked);
-                setTwoTransfers(e.target.checked);
-                setThreeTransfers(e.target.checked);
+                props.choseZero(e.target.checked);
+                props.choseOne(e.target.checked);
+                props.choseTwo(e.target.checked);
+                props.choseThree(e.target.checked);
+                props.choseAllFilters(e.target.checked);
                 break;
             case 'zero':
-                setZeroTransfer(e.target.checked);
+                if (!e.target.checked) {
+                    props.choseAllFilters(e.target.checked);
+                }
+                props.choseZero(e.target.checked);
                 break;
             case 'one':
-                setOneTransfer(e.target.checked);
+                if (!e.target.checked) {
+                    props.choseAllFilters(e.target.checked);
+                }
+                props.choseOne(e.target.checked);
                 break;
             case 'two':
-                setTwoTransfers(e.target.checked);
+                if (!e.target.checked) {
+                    props.choseAllFilters(e.target.checked);
+                }
+                props.choseTwo(e.target.checked);
                 break;
             case 'three':
-                setThreeTransfers(e.target.checked);
+                if (!e.target.checked) {
+                    props.choseAllFilters(e.target.checked);
+                }
+                props.choseThree(e.target.checked);
                 break;
             default:
-                setAllFilters(e.target.checked);
-                setZeroTransfer(e.target.checked);
-                setOneTransfer(e.target.checked);
-                setTwoTransfers(e.target.checked);
-                setThreeTransfers(e.target.checked);
+                props.choseZero(e.target.checked);
+                props.choseOne(e.target.checked);
+                props.choseTwo(e.target.checked);
+                props.choseThree(e.target.checked);
+                props.choseAllFilters(e.target.checked);
         }
     };
 
@@ -60,13 +58,12 @@ function Filters(props) {
                     <input
                         onChange={(e) => {
                             onChangeCheckbox(e);
-                            props.choseAllFilters();
                         }}
                         className={s.toggle}
                         type='checkbox'
                         id='all'
                         name='all'
-                        checked={choseAll}
+                        checked={props.allFilters}
                     />
                     <label htmlFor='all'>Все</label>
                 </div>
@@ -74,13 +71,12 @@ function Filters(props) {
                     <input
                         onChange={(e) => {
                             onChangeCheckbox(e);
-                            props.choseZero();
                         }}
                         className={s.toggle}
                         type='checkbox'
                         id='zero'
                         name='zero'
-                        checked={choseZero}
+                        checked={props.filters.zero}
                     />
                     <label htmlFor='zero'>Без пересадок</label>
                 </div>
@@ -88,13 +84,12 @@ function Filters(props) {
                     <input
                         onChange={(e) => {
                             onChangeCheckbox(e);
-                            props.choseOne();
                         }}
                         className={s.toggle}
                         type='checkbox'
                         id='one'
                         name='one'
-                        checked={choseOne}
+                        checked={props.filters.one}
                     />
                     <label htmlFor='one'>1 пересадка</label>
                 </div>
@@ -102,13 +97,12 @@ function Filters(props) {
                     <input
                         onChange={(e) => {
                             onChangeCheckbox(e);
-                            props.choseTwo();
                         }}
                         className={s.toggle}
                         type='checkbox'
                         id='two'
                         name='two'
-                        checked={choseTwo}
+                        checked={props.filters.two}
                     />
                     <label htmlFor='two'>2 пересадки</label>
                 </div>
@@ -116,13 +110,12 @@ function Filters(props) {
                     <input
                         onChange={(e) => {
                             onChangeCheckbox(e);
-                            props.choseThree();
                         }}
                         className={s.toggle}
                         type='checkbox'
                         id='three'
                         name='three'
-                        checked={choseThree}
+                        checked={props.filters.three}
                     />
                     <label htmlFor='three'>3 пересадки</label>
                 </div>
@@ -133,17 +126,18 @@ function Filters(props) {
 function mapStateToProps(state) {
     const { filtersReducer } = state;
     return {
-        filter: filtersReducer.filter,
+        filters: filtersReducer.filters,
+        allFilters: filtersReducer.allFilters,
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        choseAllFilters: () => dispatch(setAll()),
-        choseZero: () => dispatch(setZero()),
-        choseOne: () => dispatch(setOne()),
-        choseTwo: () => dispatch(setTwo()),
-        choseThree: () => dispatch(setThree()),
+        choseAllFilters: (val) => dispatch(setAll(val)),
+        choseZero: (val) => dispatch(setZero(val)),
+        choseOne: (val) => dispatch(setOne(val)),
+        choseTwo: (val) => dispatch(setTwo(val)),
+        choseThree: (val) => dispatch(setThree(val)),
     };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Filters);

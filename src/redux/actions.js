@@ -1,7 +1,16 @@
 /* eslint-disable no-unused-vars */
 import Service from '../service/ServiceFile';
 
-import { chipest, fastest, optimal, all, zero, one, two, three } from './types';
+import {
+    chipest,
+    fastest,
+    optimal,
+    allTransfer,
+    zeroTransfer,
+    oneTransfer,
+    twoTransfer,
+    threeTransfer,
+} from './types';
 
 export function chooseChipest() {
     return {
@@ -21,33 +30,38 @@ export function chooseOptimal() {
     };
 }
 
-export function setAll() {
+export function setAll(payload) {
     return {
-        type: all,
+        type: allTransfer,
+        payload,
     };
 }
 
-export function setZero() {
+export function setZero(payload) {
     return {
-        type: zero,
+        type: zeroTransfer,
+        payload,
     };
 }
 
-export function setOne() {
+export function setOne(payload) {
     return {
-        type: one,
+        type: oneTransfer,
+        payload,
     };
 }
 
-export function setTwo() {
+export function setTwo(payload) {
     return {
-        type: two,
+        type: twoTransfer,
+        payload,
     };
 }
 
-export function setThree() {
+export function setThree(payload) {
     return {
-        type: three,
+        type: threeTransfer,
+        payload,
     };
 }
 
