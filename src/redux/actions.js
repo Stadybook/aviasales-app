@@ -10,6 +10,8 @@ import {
     oneTransfer,
     twoTransfer,
     threeTransfer,
+    show,
+    loadTickets,
 } from './types';
 
 export function chooseChipest() {
@@ -67,13 +69,13 @@ export function setThree(payload) {
 
 export function addFiveTickets() {
     return {
-        type: 'show',
+        type: show,
     };
 }
 
 export function showTickets(payload) {
     return {
-        type: 'load_tickets',
+        type: loadTickets,
         payload,
     };
 }

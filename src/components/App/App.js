@@ -8,7 +8,6 @@ import Header from '../Header';
 import Filters from '../Filters';
 import TicketsList from '../TicketsList';
 import Tabs from '../Tabs';
-import ShowMoreTickets from '../ShowMoreTickets';
 import Spiner from '../Spiner/Spiner';
 import DisconnectIndicator from '../DisconnectIndicator';
 import { asyncShowTickets } from '../../redux/actions';
@@ -35,7 +34,6 @@ function App(props) {
                 <div className='main'>
                     <Tabs />
                     {ticketsContent}
-                    <ShowMoreTickets />
                 </div>
             </div>
         </div>

@@ -1,7 +1,4 @@
-/* eslint-disable prefer-const */
-/* eslint-disable import/namespace */
 /* eslint-disable react/destructuring-assignment */
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import { connect } from 'react-redux';
 
@@ -9,14 +6,15 @@ import {
     sortingByPrice,
     sortingByDuration,
     filteringByTransfers,
+    getActiveFilters,
 } from '../../service/sorting';
 import getId from '../../service/getId';
 import Ticket from '../Ticket/Ticket';
+import ShowMoreTickets from '../ShowMoreTickets';
 
 import s from './TicketsList.module.scss';
 
 function TicketsList(props) {
-    // console.log(props.filters, props.allFilters);
     let sortTickets = [];
     if (props.btn === 'Самый дешевый') {
         sortTickets = sortingByPrice(props.tickets);
@@ -26,21 +24,38 @@ function TicketsList(props) {
         sortTickets = props.tickets;
     }
 
-    /* let filterTickets = [];
+    const res = getActiveFilters(props.filters);
+    const filterTickets = sortTickets.filter((ticket) =>
+        filteringByTransfers(ticket, props.allFilters, res)
+    );
 
-    if (props.filter.zero) {
-        filterTickets = filteringByTransfers(sortTickets);
-    } else {
-        filterTickets = sortTickets;
-    } */
-
-    const elements = sortTickets // filterTickets
+    const elements = filterTickets
         .slice(0, props.numberOfTickets)
         .map((ticket) => {
             return <Ticket key={getId()} {...ticket} />;
         });
 
-    return <ul className={s.tickets}>{elements}</ul>;
+    const content =
+        elements.length !== 0 ? (
+            <>
+                <ul className={s.tickets}>{elements}</ul>
+                <ShowMoreTickets />
+            </>
+        ) : null;
+
+    const text =
+        elements.length === 0 ? (
+            <div className={s.text}>
+                <span>Билеты по запросу не найдены</span>
+            </div>
+        ) : null;
+
+    return (
+        <>
+            {text}
+            {content}
+        </>
+    );
 }
 
 function mapStateToProps(state) {
