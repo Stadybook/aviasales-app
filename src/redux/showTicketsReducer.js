@@ -6,6 +6,7 @@ const initialState = {
     tickets: [],
     stop: false,
     loading: true,
+    searchId: sessionStorage.getItem('searchId'),
 };
 
 const ShowTicketsReducer = (state = initialState, action) => {
@@ -20,6 +21,11 @@ const ShowTicketsReducer = (state = initialState, action) => {
                 ...state,
                 tickets: [...state.tickets, ...action.payload[0]],
                 stop: action.payload[1],
+            };
+        case 'getSearchId':
+            return {
+                ...state,
+                searchId: action.payload,
             };
         default:
             return state;

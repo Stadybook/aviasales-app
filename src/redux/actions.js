@@ -14,6 +14,8 @@ import {
     loadTickets,
 } from './types';
 
+const getTickets = new Service();
+
 export function chooseChipest() {
     return {
         type: chipest,
@@ -73,18 +75,33 @@ export function addFiveTickets() {
     };
 }
 
-export function showTickets(payload) {
+function showTickets(payload) {
     return {
         type: loadTickets,
         payload,
     };
 }
 
-export function asyncShowTickets(btn) {
+function getSearchId(payload) {
+    return {
+        type: 'getSearchId',
+        payload,
+    };
+}
+
+export function asyncGetSearchId() {
     return (dispatch) => {
-        const getTickets = new Service();
+        getTickets.getSearchId().then((id) => {
+            sessionStorage.setItem('searchId', id);
+            dispatch(getSearchId(id));
+        });
+    };
+}
+
+export function asyncShowTickets(id) {
+    return (dispatch) => {
         getTickets
-            .getInfo()
+            .getInfo(id)
             .then((body) => dispatch(showTickets([body.tickets, body.stop])));
     };
 }

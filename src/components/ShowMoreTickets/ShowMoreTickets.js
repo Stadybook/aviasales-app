@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable import/named */
 /* eslint-disable react/destructuring-assignment */
-import React from 'react';
-import { Typography } from 'antd';
+import React, { useState } from 'react';
+import { Typography, Button, Space } from 'antd';
 import { connect } from 'react-redux';
 
 import { addFiveTickets } from '../../redux/actions';

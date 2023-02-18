@@ -8,7 +8,13 @@ export const formattingToMinutes = (mun) => {
 
 export const formattingPrice = (price) => {
     const thousands = Math.floor(price / 1000).toString();
-    const hundreds = Math.floor(price % 1000).toString();
+    const hundredsNumber = Math.floor(price % 1000);
+    let hundreds;
+    if (hundredsNumber > 100) {
+        hundreds = Math.floor(price % 1000).toString();
+    } else {
+        hundreds = `0${Math.floor(price % 1000).toString()}`;
+    }
     const priceString = `${thousands} ${hundreds}`;
     return priceString;
 };

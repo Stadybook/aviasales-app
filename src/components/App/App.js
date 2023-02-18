@@ -10,14 +10,26 @@ import TicketsList from '../TicketsList';
 import Tabs from '../Tabs';
 import Spiner from '../Spiner/Spiner';
 import DisconnectIndicator from '../DisconnectIndicator';
-import { asyncShowTickets } from '../../redux/actions';
+import { asyncShowTickets, asyncGetSearchId } from '../../redux/actions';
 
 function App(props) {
+    // const [stopFetch , setStop] = useState(false)
+
     useEffect(() => {
-        if (!props.stop) {
-            props.loadTickets();
+        if (props.searchId === null) {
+            props.getId();
         }
-    }, [props.stop]);
+    }, []);
+
+    useEffect(() => {
+        console.log(props.tickets);
+        if (!props.stop && props.searchId !== null) {
+            /* setInterval(() => {
+                props.loadTickets(props.searchId)
+            }, 2000); */
+            props.loadTickets(props.searchId);
+        }
+    }, [props.stop, props.searchId, props.tickets]);
 
     if (!navigator.onLine) {
         return <DisconnectIndicator />;
@@ -45,6 +57,7 @@ function mapStateToProps(state) {
     const { tabsReducer } = state;
     return {
         tickets: ShowTicketsReducer.tickets,
+        searchId: ShowTicketsReducer.searchId,
         stop: ShowTicketsReducer.stop,
         btn: tabsReducer.btn,
     };
@@ -52,7 +65,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        loadTickets: () => dispatch(asyncShowTickets()),
+        loadTickets: (id) => dispatch(asyncShowTickets(id)),
+        getId: () => dispatch(asyncGetSearchId()),
     };
 }
 
