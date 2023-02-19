@@ -1,7 +1,5 @@
-/* eslint-disable prefer-destructuring */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable react/destructuring-assignment */
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import { connect } from 'react-redux';
 import { Typography } from 'antd';
@@ -12,7 +10,7 @@ import {
     formattingToHours,
     formattingToMinutes,
     formattingPrice,
-} from '../../service/formattingDate';
+} from '../../helpFunctions/formattingDate';
 
 import s from './Ticket.module.scss';
 import photo from './S7 Logo.svg';

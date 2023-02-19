@@ -10,6 +10,7 @@ import Filters from '../Filters';
 import TicketsList from '../TicketsList';
 import Tabs from '../Tabs';
 import Spiner from '../Spiner/Spiner';
+import Loader from '../Loader';
 import DisconnectIndicator from '../DisconnectIndicator';
 import { asyncShowTickets, asyncGetSearchId } from '../../redux/actions';
 
@@ -37,11 +38,10 @@ function App(props) {
     const ticketsContent =
         props.tickets.length === 0 ? <Spiner /> : <TicketsList />;
 
-    const spin = !props.stop ? <Spiner /> : null;
+    const header = !props.stop ? <Loader /> : <Header />;
     return (
         <div className='container'>
-            {spin}
-            <Header />
+            {header}
             <div className='content'>
                 <Filters />
                 <div className='main'>
@@ -55,12 +55,10 @@ function App(props) {
 
 function mapStateToProps(state) {
     const { ShowTicketsReducer } = state;
-    const { tabsReducer } = state;
     return {
         tickets: ShowTicketsReducer.tickets,
         searchId: ShowTicketsReducer.searchId,
         stop: ShowTicketsReducer.stop,
-        btn: tabsReducer.btn,
     };
 }
 

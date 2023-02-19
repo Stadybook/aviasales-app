@@ -7,8 +7,8 @@ import {
     sortingByDuration,
     filteringByTransfers,
     getActiveFilters,
-} from '../../service/sorting';
-import getId from '../../service/getId';
+} from '../../helpFunctions/sorting';
+import getId from '../../helpFunctions/getId';
 import Ticket from '../Ticket/Ticket';
 import ShowMoreTickets from '../ShowMoreTickets';
 

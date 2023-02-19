@@ -12,8 +12,10 @@ export const formattingPrice = (price) => {
     let hundreds;
     if (hundredsNumber > 100) {
         hundreds = Math.floor(price % 1000).toString();
-    } else {
+    } else if (hundredsNumber > 10) {
         hundreds = `0${Math.floor(price % 1000).toString()}`;
+    } else {
+        hundreds = `00${Math.floor(price % 1000).toString()}`;
     }
     const priceString = `${thousands} ${hundreds}`;
     return priceString;

@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
-import './Spiner.scss';
+import './Loader.scss';
 import { LoadingOutlined } from '@ant-design/icons';
 import { Spin } from 'antd';
 
@@ -13,12 +13,12 @@ const antIcon = (
     />
 );
 
-function Spiner() {
+function Loader() {
     return (
-        <div className='spiner'>
-            <Spin indicator={antIcon} tip='Loading 5 tickets...' size='large' />
+        <div className='loader'>
+            <Spin indicator={antIcon} size='large' />
         </div>
     );
 }
 
-export default Spiner;
+export default Loader;
