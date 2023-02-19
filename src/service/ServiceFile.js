@@ -5,15 +5,16 @@
 const baseURL = ' https://aviasales-test-api.kata.academy/';
 export default class Service {
     async getTicketsInfo(url) {
-        const res = await fetch(url);
-        if (res.status === 500) {
-            this.getTicketsInfo(url);
-            // throw new Error('invalid responce', res.status);
-        } else if (!res.ok) {
-            throw new Error('invalid responce', res.status);
-        } else {
+        try {
+            const res = await fetch(url);
+
+            if (!res.ok) {
+                throw new Error('invalid responce', res.status);
+            }
             const body = await res.json();
             return body;
+        } catch (e) {
+            throw new Error(e);
         }
     }
 
@@ -28,14 +29,3 @@ export default class Service {
         return body;
     };
 }
-
-/*  async getTicketsInfo(url) {
-        const res = await fetch(url);
-        if (!res.ok) {
-            // alert(`Invalid responce ${res.status}. Try to reload website.`);
-            throw new Error('invalid responce', res.status);
-        }
-
-        const body = await res.json();
-        return body;
-    } */

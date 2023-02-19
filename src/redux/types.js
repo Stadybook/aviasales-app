@@ -10,3 +10,4 @@ export const threeTransfer = 'three';
 
 export const show = 'show';
 export const loadTickets = 'load_tickets';
+export const getId = 'getSearchId';

@@ -1,12 +1,12 @@
 /* eslint-disable default-param-last */
-import { show, loadTickets } from './types';
+import { show, loadTickets, getId } from './types';
 
 const initialState = {
     numberOfTickets: 5,
     tickets: [],
     stop: false,
     loading: true,
-    searchId: sessionStorage.getItem('searchId'),
+    searchId: null,
 };
 
 const ShowTicketsReducer = (state = initialState, action) => {
@@ -22,7 +22,7 @@ const ShowTicketsReducer = (state = initialState, action) => {
                 tickets: [...state.tickets, ...action.payload[0]],
                 stop: action.payload[1],
             };
-        case 'getSearchId':
+        case getId:
             return {
                 ...state,
                 searchId: action.payload,

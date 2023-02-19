@@ -12,6 +12,7 @@ import {
     threeTransfer,
     show,
     loadTickets,
+    getId,
 } from './types';
 
 const getTickets = new Service();
@@ -84,7 +85,7 @@ function showTickets(payload) {
 
 function getSearchId(payload) {
     return {
-        type: 'getSearchId',
+        type: getId,
         payload,
     };
 }
@@ -92,7 +93,6 @@ function getSearchId(payload) {
 export function asyncGetSearchId() {
     return (dispatch) => {
         getTickets.getSearchId().then((id) => {
-            sessionStorage.setItem('searchId', id);
             dispatch(getSearchId(id));
         });
     };
@@ -102,6 +102,11 @@ export function asyncShowTickets(id) {
     return (dispatch) => {
         getTickets
             .getInfo(id)
-            .then((body) => dispatch(showTickets([body.tickets, body.stop])));
+            .then((body) => dispatch(showTickets([body.tickets, body.stop])))
+            .catch((e) => {
+                if (e.message !== 'Error: 500') {
+                    throw new Error('Service Error: 500');
+                }
+            });
     };
 }

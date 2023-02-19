@@ -15,7 +15,6 @@ import ShowMoreTickets from '../ShowMoreTickets';
 import s from './TicketsList.module.scss';
 
 function TicketsList(props) {
-    // console.log(props.tickets)
     let sortTickets = [];
     if (props.btn === 'Самый дешевый') {
         sortTickets = sortingByPrice(props.tickets);

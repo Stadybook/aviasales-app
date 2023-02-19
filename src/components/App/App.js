@@ -1,6 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/destructuring-assignment */
-/* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from 'react';
+
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import './App.scss';
@@ -13,8 +14,6 @@ import DisconnectIndicator from '../DisconnectIndicator';
 import { asyncShowTickets, asyncGetSearchId } from '../../redux/actions';
 
 function App(props) {
-    // const [stopFetch , setStop] = useState(false)
-
     useEffect(() => {
         if (props.searchId === null) {
             props.getId();
@@ -22,14 +21,14 @@ function App(props) {
     }, []);
 
     useEffect(() => {
-        console.log(props.tickets);
-        if (!props.stop && props.searchId !== null) {
-            /* setInterval(() => {
-                props.loadTickets(props.searchId)
-            }, 2000); */
-            props.loadTickets(props.searchId);
+        let idInt;
+        if (!props.stop && props.searchId) {
+            idInt = setInterval(() => {
+                props.loadTickets(props.searchId);
+            }, 1000);
         }
-    }, [props.stop, props.searchId, props.tickets]);
+        return () => clearInterval(idInt);
+    }, [props.stop, props.searchId, props]);
 
     if (!navigator.onLine) {
         return <DisconnectIndicator />;
@@ -38,8 +37,10 @@ function App(props) {
     const ticketsContent =
         props.tickets.length === 0 ? <Spiner /> : <TicketsList />;
 
+    const spin = !props.stop ? <Spiner /> : null;
     return (
         <div className='container'>
+            {spin}
             <Header />
             <div className='content'>
                 <Filters />
