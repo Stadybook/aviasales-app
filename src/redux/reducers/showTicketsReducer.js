@@ -5,7 +5,6 @@ const initialState = {
     numberOfTickets: 5,
     tickets: [],
     stop: false,
-    loading: true,
     searchId: null,
 };
 

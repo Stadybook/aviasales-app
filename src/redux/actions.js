@@ -105,7 +105,7 @@ export function asyncShowTickets(id) {
             .then((body) => dispatch(showTickets([body.tickets, body.stop])))
             .catch((e) => {
                 if (e.message !== 'Error: 500') {
-                    throw new Error('Service Error: 500');
+                    throw new Error(`Service Error ${e.message}`);
                 }
             });
     };

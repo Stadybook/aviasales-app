@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { connect } from 'react-redux';
 
@@ -6,6 +7,7 @@ import {
     sortingByDuration,
     filteringByTransfers,
     getActiveFilters,
+    sortingByOptimal,
 } from '../../helpFunctions/sorting';
 import getId from '../../helpFunctions/getId';
 import Ticket from '../Ticket/Ticket';
@@ -21,7 +23,7 @@ function TicketsList(props) {
     } else if (btn === 'Самый быстрый') {
         sortTickets = sortingByDuration(tickets);
     } else {
-        sortTickets = tickets;
+        sortTickets = sortingByOptimal(tickets);
     }
 
     const res = getActiveFilters(filters);
@@ -32,19 +34,20 @@ function TicketsList(props) {
     const elements = filterTickets.slice(0, numberOfTickets).map((ticket) => {
         return <Ticket key={getId()} {...ticket} />;
     });
+    const button = numberOfTickets === 9555 ? null : <ShowMoreTickets />;
 
     const content =
         elements.length !== 0 ? (
             <>
                 <ul className={s.tickets}>{elements}</ul>
-                <ShowMoreTickets />
+                {button}
             </>
         ) : null;
 
     const text =
         elements.length === 0 ? (
             <div className={s.text}>
-                <span>Билеты по запросу не найдены</span>
+                <span>Рейсов, подходящих под заданные фильтры, не найдено</span>
             </div>
         ) : null;
 

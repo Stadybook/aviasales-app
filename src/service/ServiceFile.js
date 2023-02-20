@@ -7,7 +7,6 @@ export default class Service {
     async getTicketsInfo(url) {
         try {
             const res = await fetch(url);
-
             if (!res.ok) {
                 throw new Error('invalid responce', res.status);
             }

@@ -1,10 +1,13 @@
+/* eslint-disable no-unused-vars */
+const getTotalFlyDuration = (ticket) =>
+    ticket.segments.map((item) => item.duration).reduce((a, b) => a + b, 0);
+
+const getPrice = (ticket) => (ticket.price + getTotalFlyDuration(ticket)) / 2;
+
 // Сортировка по цене
 export function sortingByPrice(data) {
     return data.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
 }
-
-const getTotalFlyDuration = (ticket) =>
-    ticket.segments.map((item) => item.duration).reduce((a, b) => a + b, 0);
 
 // Сортировка по времени полета
 export function sortingByDuration(data) {
@@ -12,6 +15,13 @@ export function sortingByDuration(data) {
         (a, b) =>
             parseFloat(getTotalFlyDuration(a)) -
             parseFloat(getTotalFlyDuration(b))
+    );
+}
+
+// выбор оптимального
+export function sortingByOptimal(data) {
+    return data.sort(
+        (a, b) => parseFloat(getPrice(a)) - parseFloat(getPrice(b))
     );
 }
 
