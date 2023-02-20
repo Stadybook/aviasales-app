@@ -1,6 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable react/destructuring-assignment */
-
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
@@ -15,30 +13,30 @@ import DisconnectIndicator from '../DisconnectIndicator';
 import { asyncShowTickets, asyncGetSearchId } from '../../redux/actions';
 
 function App(props) {
+    const { stop, tickets, searchId, loadTickets, getId } = props;
     useEffect(() => {
-        if (props.searchId === null) {
-            props.getId();
+        if (searchId === null) {
+            getId();
         }
     }, []);
 
     useEffect(() => {
         let idInt;
-        if (!props.stop && props.searchId) {
+        if (!stop && searchId) {
             idInt = setInterval(() => {
-                props.loadTickets(props.searchId);
+                loadTickets(searchId);
             }, 1000);
         }
         return () => clearInterval(idInt);
-    }, [props.stop, props.searchId, props]);
+    }, [stop, searchId]);
 
     if (!navigator.onLine) {
         return <DisconnectIndicator />;
     }
 
-    const ticketsContent =
-        props.tickets.length === 0 ? <Spiner /> : <TicketsList />;
+    const ticketsContent = tickets.length === 0 ? <Spiner /> : <TicketsList />;
 
-    const header = !props.stop ? <Loader /> : <Header />;
+    const header = !stop ? <Loader /> : <Header />;
     return (
         <div className='container'>
             {header}

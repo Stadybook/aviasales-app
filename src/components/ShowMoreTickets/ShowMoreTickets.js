@@ -1,4 +1,3 @@
-/* eslint-disable react/destructuring-assignment */
 import { Typography } from 'antd';
 import { connect } from 'react-redux';
 
@@ -9,8 +8,9 @@ import s from './ShowMoreTickets.module.scss';
 const { Text } = Typography;
 
 function ShowMoreTickets(props) {
+    const { showMore } = props;
     return (
-        <button type='button' onClick={props.showMore} className={s.btn}>
+        <button type='button' onClick={showMore} className={s.btn}>
             <Text className={s.text}>Показать еще 5 билетов!</Text>
         </button>
     );

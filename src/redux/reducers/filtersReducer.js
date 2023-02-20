@@ -5,7 +5,7 @@ import {
     oneTransfer,
     twoTransfer,
     threeTransfer,
-} from './types';
+} from '../types';
 
 const initialState = {
     allFilters: true,

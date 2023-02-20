@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 // Сортировка по цене
 export function sortingByPrice(data) {
     return data.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));

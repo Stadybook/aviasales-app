@@ -1,5 +1,5 @@
 /* eslint-disable default-param-last */
-import { chipest, fastest, optimal } from './types';
+import { chipest, fastest, optimal } from '../types';
 
 const initialState = {
     btn: 'Самый дешевый',

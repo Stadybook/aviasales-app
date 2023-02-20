@@ -1,5 +1,5 @@
 /* eslint-disable default-param-last */
-import { show, loadTickets, getId } from './types';
+import { show, loadTickets, getId } from '../types';
 
 const initialState = {
     numberOfTickets: 5,

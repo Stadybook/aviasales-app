@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import './Spiner.scss';
 import { LoadingOutlined } from '@ant-design/icons';

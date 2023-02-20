@@ -1,4 +1,3 @@
-/* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import { connect } from 'react-redux';
 
@@ -15,25 +14,24 @@ import ShowMoreTickets from '../ShowMoreTickets';
 import s from './TicketsList.module.scss';
 
 function TicketsList(props) {
+    const { tickets, allFilters, filters, btn, numberOfTickets } = props;
     let sortTickets = [];
-    if (props.btn === 'Самый дешевый') {
-        sortTickets = sortingByPrice(props.tickets);
-    } else if (props.btn === 'Самый быстрый') {
-        sortTickets = sortingByDuration(props.tickets);
+    if (btn === 'Самый дешевый') {
+        sortTickets = sortingByPrice(tickets);
+    } else if (btn === 'Самый быстрый') {
+        sortTickets = sortingByDuration(tickets);
     } else {
-        sortTickets = props.tickets;
+        sortTickets = tickets;
     }
 
-    const res = getActiveFilters(props.filters);
+    const res = getActiveFilters(filters);
     const filterTickets = sortTickets.filter((ticket) =>
-        filteringByTransfers(ticket, props.allFilters, res)
+        filteringByTransfers(ticket, allFilters, res)
     );
 
-    const elements = filterTickets
-        .slice(0, props.numberOfTickets)
-        .map((ticket) => {
-            return <Ticket key={getId()} {...ticket} />;
-        });
+    const elements = filterTickets.slice(0, numberOfTickets).map((ticket) => {
+        return <Ticket key={getId()} {...ticket} />;
+    });
 
     const content =
         elements.length !== 0 ? (

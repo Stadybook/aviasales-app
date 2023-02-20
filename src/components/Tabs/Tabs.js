@@ -1,5 +1,3 @@
-/* eslint-disable no-use-before-define */
-/* eslint-disable react/destructuring-assignment */
 import { connect } from 'react-redux';
 import { Typography } from 'antd';
 
@@ -14,13 +12,14 @@ import s from './Tabs.module.scss';
 const { Text } = Typography;
 
 function Tabs(props) {
+    const { btn, onChipestBtn, onFasterBtn, onOptimalBtn } = props;
     return (
         <div className={s.btns}>
             <button
                 type='button'
-                onClick={props.onChipestBtn}
+                onClick={onChipestBtn}
                 className={
-                    props.btn === 'Самый дешевый'
+                    btn === 'Самый дешевый'
                         ? `${s.btn} ${s.active}`
                         : `${s.btn}`
                 }
@@ -29,9 +28,9 @@ function Tabs(props) {
             </button>
             <button
                 type='button'
-                onClick={props.onFasterBtn}
+                onClick={onFasterBtn}
                 className={
-                    props.btn === 'Самый быстрый'
+                    btn === 'Самый быстрый'
                         ? `${s.btn} ${s.active}`
                         : `${s.btn}`
                 }
@@ -40,11 +39,9 @@ function Tabs(props) {
             </button>
             <button
                 type='button'
-                onClick={props.onOptimalBtn}
+                onClick={onOptimalBtn}
                 className={
-                    props.btn === 'Оптимальный'
-                        ? `${s.btn} ${s.active}`
-                        : `${s.btn}`
+                    btn === 'Оптимальный' ? `${s.btn} ${s.active}` : `${s.btn}`
                 }
             >
                 <Text className={s.text}>Оптимальный</Text>
